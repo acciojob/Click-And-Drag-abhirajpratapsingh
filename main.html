@@ -34,43 +34,6 @@
     <div class="item item25">25</div>
   </div>
 
-<script>
-  const items = document.querySelectorAll('.item');
-  let dragging = null;
-  let offsetX, offsetY;
-
-  items.forEach(item => {
-    item.addEventListener('mousedown', (e) => {
-      dragging = item;
-      offsetX = e.clientX - item.getBoundingClientRect().left;
-      offsetY = e.clientY - item.getBoundingClientRect().top;
-      item.style.position = 'absolute';
-      item.style.zIndex = '1000';
-      document.body.appendChild(item);
-    });
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    if (dragging) {
-      dragging.style.left = `${e.clientX - offsetX}px`;
-      dragging.style.top = `${e.clientY - offsetY}px`;
-    }
-  });
-
-  document.addEventListener('mouseup', () => {
-    if (dragging) {
-      const rect = document.querySelector('.items').getBoundingClientRect();
-      const itemRect = dragging.getBoundingClientRect();
-      const left = Math.min(Math.max(itemRect.left - rect.left, 0), rect.width - itemRect.width);
-      const top = Math.min(Math.max(itemRect.top - rect.top, 0), rect.height - itemRect.height);
-      
-      dragging.style.left = `${left}px`;
-      dragging.style.top = `${top}px`;
-      dragging.style.zIndex = 'auto';
-      dragging = null;
-    }
-  });
-</script>
-
+  <script type="text/javascript" src="./script.js"></script>
 </body>
 </html>
